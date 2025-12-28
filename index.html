@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Efeito Lanterna - Diablo III</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            cursor: none; /* some com o cursor pra ficar mais imersivo */
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url("https://characters.fandom.com/wiki/Airi_Akitsuki?file=Airi_Akitsuki.jpg");
+            /* ↑ imagem de exemplo do Diablo (pode trocar depois) */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .darkness {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                circle 120px at 50% 50%,
+                transparent 0%,
+                rgba(0,0,0,0.95) 70%
+            );
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="darkness" id="darkness"></div>
+    </div>
+
+    <script>
+        const darkness = document.getElementById("darkness");
+
+        document.addEventListener("mousemove", (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+
+            darkness.style.background = `
+                radial-gradient(
+                    circle 120px at ${x}px ${y}px,
+                    transparent 0%,
+                    rgba(0,0,0,1) 70%
+                )
+            `;
+        });
+    </script>
+</body>
+</html>
